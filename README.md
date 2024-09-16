@@ -33,6 +33,8 @@
     Click apply and save.
 12. Install Jenkins plugin -  Pipeline: Stage View
 13. Now we will create a pipeline to run terraform to create EKS infra.
+14. Create a S3 bucket(sri-eks-backet1-156461) and Dynamodb table for Terraform backend
+
 
 
 

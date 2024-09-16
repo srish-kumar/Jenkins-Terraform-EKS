@@ -70,6 +70,12 @@ sudo apt-get install trivy
 
 # ========================
 
+# # Intalling Helm
+# #! /bin/bash
+# sudo snap install helm --classic
+
+==========================
+
 # # Install-Jfrog-Artifactory
 
 # #! /bin/bash
