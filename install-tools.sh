@@ -102,7 +102,6 @@ sudo apt-get install trivy -y
 # ==============
 
 # # Note:
-# # Installation Only Work for Ubuntu 18.04LTS, 20.04LTS and 22.04LTS
 
 # # Steps to use the Scripts For Linux OS only
 # # Installation Only Work for Ubuntu 18.04LTS, 20.04LTS and 22.04LTS
@@ -114,6 +113,20 @@ sudo apt-get install trivy -y
 # cd Scripts-Installation
 # sudo chmod +x <Script_name> e.g,sudo chmod +x Install-Docker.sh
 # ./<Script_name> e.g ./Install-Docker.sh
+
+# To validate installation run these commands:
+jenkins --version
+docker --version
+aws s3 ls / aws help
+trivy --version
+
+sudo docker ps to get sonar container:
+  #run these commands on EC2 restart:
+  sudo usermod -aG docker jenkins
+  sudo usermod -aG docker ubuntu
+  sudo systemctl restart docker
+  sudo chmod 777 /var/run/docker.sock
+  
 
 
 
