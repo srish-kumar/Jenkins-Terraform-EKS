@@ -115,17 +115,25 @@ sudo apt-get install trivy -y
 # ./<Script_name> e.g ./Install-Docker.sh
 
 # To validate installation run these commands:
-jenkins --version
-docker --version
-aws s3 ls / aws help
-trivy --version
+# jenkins --version
+# docker --version
+# aws s3 ls / aws help
+# trivy --version
 
-sudo docker ps to get sonar container:
-  #run these commands on EC2 restart:
-  sudo usermod -aG docker jenkins
-  sudo usermod -aG docker ubuntu
-  sudo systemctl restart docker
-  sudo chmod 777 /var/run/docker.sock
+# sudo docker ps to get sonar container:
+#   #run these commands on EC2 restart:
+#   sudo usermod -aG docker jenkins
+#   sudo usermod -aG docker ubuntu
+#   sudo systemctl restart docker
+#   sudo chmod 777 /var/run/docker.sock
+
+# Troubleshoot Jenkins slowness on EC2 restart:
+# cd /var/lib/jenkins/
+# sudo nano jenkins.model.JenkinsLocationConfiguration.xml
+# Change the server url to current ip
+# press clt+o enter so save ; press clt X to come out
+# sudo service jenkins restart
+# to verify - sudo service jenkins status
   
 
 
