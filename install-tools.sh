@@ -41,6 +41,7 @@ sudo apt update
 sudo apt install terraform
 
 # Installing AWS CLI
+#!/bin/sh
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip -y
 unzip awscliv2.zip
@@ -58,30 +59,45 @@ echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main |
 sudo apt-get update
 sudo apt-get install trivy -y
 
-
+===================================================
+Script to install tools on the jump server:
 ============================
-# # Install kubectl:
-# # To handle eks cluster and resources with kubectl
-# #!/bin/bash
-# sudo apt update
-# sudo apt install curl -y
-# curl -LO "https://dl.k8s.io/release/v1.28.4/bin/linux/amd64/kubectl"
-# sudo chmod +x kubectl
-# sudo mv kubectl /usr/local/bin/
-# kubectl version --client
+
+# Installing AWS CLI
+#!/bin/sh
+sudo apt update
+sudo apt install curl -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo apt install unzip -y
+unzip awscliv2.zip
+sudo ./aws/install
 
 
-# # Intalling Helm
-# # To be used in the monitoring part
-# #!/bin/bash
-# sudo snap install helm --classic
+# Install kubectl:
+# To handle eks cluster and resources with kubectl
+curl -LO "https://dl.k8s.io/release/v1.28.4/bin/linux/amd64/kubectl"
+sudo chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+kubectl version --client
 
 
+#Installing eksctl
+#To create service accounts
+#To run kubectl kubeconfig command to set cluster context
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+eksctl version
+
+#Intalling Helm
+#To be used in the monitoring part #using snap not /bash
+sudo snap install helm --classic
+
+==============================================================
+
+#More installation scripts and notes:
 
 # # Install-Jfrog-Artifactory
-
 # #!/bin/bash
-
 # cd /opt
 # wget https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.9.2/jfrog-artifactory-oss-7.9.2-linux.tar.gz
 # tar -xvf jfrog-artifactory-oss-7.9.2-linux.tar.gz
@@ -89,17 +105,17 @@ sudo apt-get install trivy -y
 # cd app/bin/
 # ./artifactory.sh start
 
-# =======================
 
 # # Install minikube
 # #!/bin/bash
-
 # sudo apt update
 # sudo apt upgrade
 # wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 # chmod +x minikube-linux-amd64
 # sudo mv minikube-linux-amd64 /usr/local/bin/minikube
 # ==============
+
+
 
 # # Note:
 
