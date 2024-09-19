@@ -35,7 +35,10 @@
 13. Now we will create a pipeline to run terraform to create EKS infra.
 14. Create a S3 bucket(sri-eks-backet1-156461) and Dynamodb table (Lock-Files) for Terraform backend.
 15. Create the Jenkinsfile.
-16. 
+16. Configure Jenkiins to run the terraform script.
+17. Add jenkins pipeline script in the Jenkins and run the Jenkins job. 
+
+=====================================
 
 
 

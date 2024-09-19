@@ -64,7 +64,6 @@ Script to install tools on the jump server:
 ============================
 
 # Installing AWS CLI
-#!/bin/sh
 sudo apt update
 sudo apt install curl -y
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
