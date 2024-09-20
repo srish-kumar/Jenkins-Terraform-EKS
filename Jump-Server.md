@@ -49,7 +49,7 @@ Note -> In the current case, we were directly able to run eksctl create iamservi
 *IAM Roles for Service Accounts (IRSA)*: Enables secure AWS permissions for EKS workloads without hardcoding credentials.
 *OIDC URL*: Unique to each EKS cluster and used for authentication between Kubernetes and AWS IAM.
 
-iii. Run these commands to deploy the AWS Load Balancer Controller:
+iii. Run these commands to *deploy the AWS Load Balancer Controller using Helm*:
 $ helm repo add eks https://aws.github.io/eks-charts
 $ helm repo update eks
 
