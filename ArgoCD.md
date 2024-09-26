@@ -1,3 +1,7 @@
+***For GitOps (For Continuous Delivery) refer to this repo - ***
+https://github.com/srish-kumar/ArgoCD-Deploy-EKS
+
+
 *CONFIGURE ARGOCD:*
 
 Pre-requisite:
