@@ -1,0 +1,50 @@
+name: Terraform EKS Workflow
+
+on:
+  push:
+    branches:
+      - final
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: us-east-1
+    parameters:
+      Environment: dev
+      Terraform_Action: plan
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: final
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Preparing
+        run: echo Preparing
+
+      - name: Terraform Init
+        run: terraform -chdir=EKS/ init
+
+      - name: Terraform Validate
+        run: terraform -chdir=EKS/ validate
+
+      - name: Terraform Action
+        run: |
+          if [ "${{ github.event.inputs.Terraform_Action }}" == "plan" ]; then
+            terraform -chdir=EKS/ plan -var-file=${{ github.event.inputs.Environment }}.tfvars
+          elif [ "${{ github.event.inputs.Terraform_Action }}" == "apply" ]; then
+            terraform -chdir=EKS/ apply -var-file=${{ github.event.inputs.Environment }}.tfvars -auto-approve
+          elif [ "${{ github.event.inputs.Terraform_Action }}" == "destroy" ]; then
+            terraform -chdir=EKS/ destroy -var-file=${{ github.event.inputs.Environment }}.tfvars -auto-approve
+          else
+            echo "Invalid value for Terraform_Action: ${{ github.event.inputs.Terraform_Action }}"
+            exit 1
+          fi
