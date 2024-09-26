@@ -1,4 +1,9 @@
-Deployment of a tree tier application on EKS cluster using Terraform and GitOps tool ArgoCD.
+***Deployment of a tree tier application on EKS cluster using Terraform and GitOps tool ArgoCD.***
+
+***In this repository:***
+1. Set up EKS infrastructure using Terraform and Jenkins/Github
+2. For GitOps (For Continuous Delivery) refer to this repo - 
+https://github.com/srish-kumar/ArgoCD-Deploy-EKS
 
 ***Set up EKS infrastructure using Terraform and Jenkins/Github***
 
@@ -60,9 +65,6 @@ Steps:
 17. Add jenkins pipeline script in the Jenkins and run the Jenkins job. 
 
 =====================================
-
-For GitOps (For Continuous Delivery) refer to this repo - 
-https://github.com/srish-kumar/ArgoCD-Deploy-EKS
 
 
 
